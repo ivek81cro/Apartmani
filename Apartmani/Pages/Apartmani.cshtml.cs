@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Apartmani.Pages
 {
+    //TODO: Fix mobile view
     public class ApartmaniModel : PageModel
     {
         private readonly ApplicationDbContext _context;

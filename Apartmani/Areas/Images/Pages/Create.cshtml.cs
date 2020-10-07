@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,6 +14,8 @@ using Apartmani.Utility;
 namespace Apartmani.Pages.Images
 {
     [Authorize(Roles = SD.AdminEndUser)]
+    
+    //TODO: Change upload model for images, fixed dir names and filter in index
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
