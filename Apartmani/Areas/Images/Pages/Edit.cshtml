@@ -1,0 +1,45 @@
+﻿@page
+@model Apartmani.Pages.Images.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Image</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4 col-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Image.Id" />
+            <div class="form-group">
+                <label asp-for="Image.Path" class="control-label"></label>
+                <input asp-for="Image.Path" class="form-control" readonly />
+                <span asp-validation-for="Image.Path" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image.CategoryId" class="control-label"></label>
+                <select asp-for="Image.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="Image.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+        @{
+            string s = "/" + Model.Image.Path.Replace('\\', '/');
+        }
+        <img src="@s" />
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,43 @@
+﻿@page
+@model Apartmani.Pages.ApartmaniModel
+@{
+    ViewData["Title"] = "Apartmani";
+}
+
+<h1 class="mt-3 mb-3">
+    Apartmani
+</h1>
+
+<div class="row">
+    <div class="col-3">
+        <img src="@Model.Images[0].Path" class="shadow" />
+    </div>
+    <div class="col-9">
+        <h3 class="text-secondary">
+            Svi apartmani sadrže:
+        </h3>
+        <p>
+            - Klima uređaj<br />
+            - SAT Tv<br />
+            - Internet pristup Wi-Fi<br />
+            - Kuhinja: hladnjak, aparat za kavu, ploča za kuhanje<br />
+            - Kupaona: tuš-kada<br />
+            - Terasa: sol, stolci, suncobran<br />
+        </p>
+
+        <h3 class="text-secondary">
+            Apartman 2+2 (8 apartmana)
+        </h3>
+        <p>
+            -kuhinja sa blagovaonom, dnevni boravak, spavaća soba sa bračnim krevetom, kupaona sa tuš-kadom, terasa (+ stol + stolci).<br />
+            (dnevni boravak sadrži garnituru koja može poslužiti kao ležaj za 2 osobe.)
+        </p>
+        <h3 class="text-secondary">
+            Apartman 6+2 (1 apartman)
+        </h3>
+        <p>
+            -kuhinja sa blagovaonom, dnevni boravak, 3 spavaće sobe, dvije kupaone sa tuš-kadom, terasa (+ stol + stolci).<br />
+            (dnevni boravak sadrži garnituru koja može poslužiti kao ležaj za 2 osobe, te po potrebi može se postaviti još pomočni ležaj.)
+        </p>
+    </div>
+</div>

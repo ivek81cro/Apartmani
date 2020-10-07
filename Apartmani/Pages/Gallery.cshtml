@@ -1,0 +1,22 @@
+﻿@page
+@model Apartmani.Pages.GalleryModel
+@{
+    ViewData["Title"] = "Galerija";
+}
+
+<h1 class="mt-3 mb-5">
+    Galerija
+</h1>
+<div class="lightbox-gallery">
+    <div class="container">
+        <div class="row photos">
+            @for (int i = 0; i < Model.Images.Count(); ++i)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 item">
+                    <a href="@Model.Images[i].Path" data-lightbox="photos">
+                        <img class="img-fluid" src="@Model.Images[i].Path" />
+                    </a>
+                </div>}
+        </div>
+    </div>
+</div>

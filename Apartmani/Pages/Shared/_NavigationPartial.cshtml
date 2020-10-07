@@ -1,0 +1,30 @@
+﻿@using Apartmani.Utility
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom border-top box-shadow mb-3">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse nav-custom d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>                    
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Apartmani">Apartmani</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Gallery">Galerija</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Kontakt</a>
+                </li>
+                @if (User.IsInRole(SD.AdminEndUser))
+                {
+                    <partial name="_NavigationManagerPartial" />
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
