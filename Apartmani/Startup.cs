@@ -15,6 +15,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Apartmani.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.WebEncoders;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace Apartmani
 {
@@ -33,7 +36,7 @@ namespace Apartmani
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -53,6 +56,11 @@ namespace Apartmani
                         Configuration["EmailSender:Password"]
                     )
             );
+
+            services.Configure<WebEncoderOptions>(options =>
+            {
+                options.TextEncoderSettings = new TextEncoderSettings(UnicodeRanges.All);
+            });
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
@@ -74,6 +82,8 @@ namespace Apartmani
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
