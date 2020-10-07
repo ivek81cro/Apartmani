@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Apartmani/appsettings.json
+/Apartmani/appsettings.Development.json
