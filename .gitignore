@@ -341,3 +341,4 @@ healthchecksdb
 /Apartmani/appsettings.json
 /Apartmani/appsettings.Development.json
 *.jpg
+*.png
