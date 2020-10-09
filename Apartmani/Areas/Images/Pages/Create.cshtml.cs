@@ -60,7 +60,7 @@ namespace Apartmani.Pages.Images
 
             if (files.Count > 0)
             {
-                var uploads = Path.Combine(webRootPath, $"img\\{ name }");
+                var uploads = Path.Combine(webRootPath, $"img/{ name }");
                 var extension = Path.GetExtension(files[0].FileName);
 
                 using (var fileStream = new FileStream(Path.Combine(uploads, imageFromDb.Id + extension), FileMode.Create))
