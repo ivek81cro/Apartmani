@@ -44,7 +44,7 @@ namespace Apartmani.Pages.ImageCategories
             await _context.SaveChangesAsync();
 
             string webRoot = _hostEnviroment.WebRootPath;
-            var path = Path.Combine(webRoot, $"img\\{ImageCategory.Name.ToLower()}");
+            var path = Path.Combine(webRoot, $"img/{ImageCategory.Name.ToLower()}"); //for IIS ...$"img\\..
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
