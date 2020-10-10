@@ -74,7 +74,8 @@ body {
 }
 
 .address {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script';
+    font-style: italic;
     font-size: 1.5em;
 }
 
