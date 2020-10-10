@@ -8,10 +8,15 @@
 
 <h1>Upload Images</h1>
 
-<p>
-    <a asp-page="./Create" class="btn btn-success">Upload new image</a>
-</p>
-<table class="table">
+<div class="col-12 row mt-3 mb-3">
+    <div class="col-12 col-md-3">
+        <a asp-page="./Create" class="btn btn-success form-control">Upload new image</a>
+    </div>
+    <div class="col-12 col-md-6">
+        <input class="float-md-right mt-2 mt-md-0 form-control" id="table-filter" type="text" placeholder="Filter data..">
+    </div>
+</div>
+<table class="table" id="image-table">
     <thead>
         <tr>
             <th>
@@ -27,23 +32,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Image) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Path)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageCategory.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Image)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageCategory.Name)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#table-filter").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#image-table tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}
