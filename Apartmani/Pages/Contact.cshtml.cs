@@ -35,10 +35,10 @@ namespace Apartmani.Pages
 
             if (ModelState.IsValid)
             {
-                await _emailSender.SendEmailAsync("apartman.tokic@gmail.com",
+                await _emailSender.SendEmailAsync("ivek81cro@gmail.com",//ivek81cro@gmail.com,apartman.tokic@gmail.com
                     "Poruka sa stranice apartmani-tokic.com, kontakt forma",
                     $"<h3>Name: {Request.Form["Name"]}</h3><a href='{Request.Form["Email"]}'>Email pošiljatelja: " +
-                    $"{Request.Form["Email"]}</a><p>POruka: {Request.Form["Message"]}</p>");
+                    $"{Request.Form["Email"]}</a><p>Poruka:<br /> {Request.Form["Message"]}</p>");
 
                 return Redirect("ContactSuccess");
             }
