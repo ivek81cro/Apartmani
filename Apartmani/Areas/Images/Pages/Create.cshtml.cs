@@ -15,7 +15,7 @@ namespace Apartmani.Pages.Images
 {
     [Authorize(Roles = SD.AdminEndUser)]
     
-    //TODO: Change upload model for images, fixed dir names and filter in index
+    //TODO: Change upload model for images, fixed dir names
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
