@@ -338,7 +338,23 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-/Apartmani/appsettings.json
-/Apartmani/appsettings.Development.json
+# Local application configuration; keep an explicitly named example commit-ready.
+/Apartmani/appsettings*.json
+!/Apartmani/appsettings.example.json
+
+# Local secrets, credentials and private key material.
+.env
+.env.*
+!.env.example
+secrets.json
+*.key
+*.pem
+*.p12
+id_rsa
+id_ed25519
+/ops/*.local.*
 *.jpg
 *.png
+# Local-only project notes (may contain environment-specific information)
+/.local-project-notes.md
+/AGENTS.md

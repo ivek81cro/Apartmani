@@ -1,30 +1,31 @@
-﻿@using Apartmani.Utility
-
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom border-top box-shadow mb-3">
-    <div class="container">
-        <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse nav-custom d-sm-inline-flex flex-sm-row-reverse">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>                    
-                </li>
-                <li>
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Apartmani">Apartmani</a>
-                </li>
-                <li>
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Gallery">Galerija</a>
-                </li>
-                <li>
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Kontakt</a>
-                </li>
-                @if (User.IsInRole(SD.AdminEndUser))
-                {
-                    <partial name="_NavigationManagerPartial" />
-                }
-            </ul>
-        </div>
-    </div>
+@using Apartmani.Utility
+<nav class="main-nav" aria-label="@L["Glavna navigacija"]">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">@L["Izbornik"] <span aria-hidden="true">☰</span></button>
+    <ul id="main-menu" class="nav-links">
+        <li>
+            <a asp-area="" asp-page="/Index">@L["Naslovnica"]</a>
+        </li>
+        <li>
+            <a asp-area="" asp-page="/Apartmani">@L["Apartmani"]</a>
+        </li>
+        <li>
+            <a asp-area="" asp-page="/Gallery">@L["Galerija"]</a>
+        </li>
+        <li>
+            <a asp-area="" asp-page="/Contact">@L["Kontakt"]</a>
+        </li>
+        @if (User.IsInRole(SD.AdminEndUser))
+        {
+            <partial name="_NavigationManagerPartial" />
+        }
+        <li class="language-switcher" aria-label="@L["Odaberite jezik"]">
+            <span class="language-label">@L["Jezik"]:</span>
+            @foreach (var language in new[] { "hr", "en", "de" })
+            {
+                <a href="@(Context.Request.PathBase)@(Context.Request.Path)?culture=@language"
+                   lang="@language" hreflang="@language"
+                   aria-current="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == language ? "true" : null)">@language.ToUpperInvariant()</a>
+            }
+        </li>
+    </ul>
 </nav>

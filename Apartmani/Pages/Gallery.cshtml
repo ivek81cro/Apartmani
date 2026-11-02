@@ -1,23 +1,53 @@
-﻿@page
+@page
 @model Apartmani.Pages.GalleryModel
 @{
-    ViewData["Title"] = "Galerija";
-    ViewData["Description"] = "Galerija slika Apartmani Tokić, izgled unutrašnjosti i okoliša.";
+    ViewData["Title"] = L["Galerija"].Value;
+    ViewData["Description"] = L["Fotografije apartmana Tokić i njihove okolice."].Value;
 }
-
-<h1 class="mt-3 mb-5">
-    Galerija
-</h1>
-<div class="lightbox-gallery">
-    <div class="container">
-        <div class="row photos">
-            @for (int i = 0; i < Model.Images.Count(); ++i)
+<section class="page-heading wrap">
+    <p class="eyebrow">@L["TRENUTAK NA ČIOVU"]</p>
+    <h1>@L["Galerija"]</h1>
+    <p class="lead">@L["Zavirite u apartmane i njihovu okolicu."]</p>
+</section>
+<section class="wrap section page-content">
+    <div class="gallery-grid" id="gallery">
+        @for (var i = 0; i < Model.Images.Count; i++)
+        {
+            <a href="@Model.Images[i].Path" data-gallery-item aria-label="@L["Otvori fotografiju {0} od {1}", i + 1, Model.Images.Count]">
+                <img src="@Model.Images[i].Path" alt="@L["Apartmani Tokić i okolica, fotografija {0}", i + 1]" loading="lazy" />
+            </a>
+        }
+    </div>
+    @if (!Model.Images.Any())
+    {
+        <p>@L["Fotografije trenutačno nisu dostupne."]</p>
+    }
+</section>
+<dialog class="gallery-dialog" id="gallery-dialog" aria-label="@L["Pregled fotografija"]">
+    <header class="gallery-viewer-header">
+        <button class="gallery-close" type="button" aria-label="@L["Zatvori pregled"]">
+            <span aria-hidden="true">←</span> @L["Galerija"]
+        </button>
+        <span class="gallery-viewer-brand">Apartmani Tokić</span>
+        <button class="gallery-close-icon" type="button" aria-label="@L["Zatvori pregled"]">×</button>
+    </header>
+    <div class="gallery-viewer-main">
+        <button class="gallery-prev" type="button" aria-label="@L["Prethodna fotografija"]">&#8249;</button>
+        <div class="gallery-stage">
+            <img class="gallery-full-image" alt="" />
+        </div>
+        <button class="gallery-next" type="button" aria-label="@L["Sljedeća fotografija"]">&#8250;</button>
+    </div>
+    <div class="gallery-viewer-footer">
+        <p class="gallery-counter" aria-live="polite"></p>
+        <div class="gallery-thumbnails" aria-label="@L["Galerija"]">
+            @for (var i = 0; i < Model.Images.Count; i++)
             {
-                <div class="col-sm-6 col-md-4 col-lg-3 item">
-                    <a href="@Model.Images[i].Path" data-lightbox="photos">
-                        <img class="img-fluid" src="@Model.Images[i].Path" />
-                    </a>
-                </div>}
+                <button class="gallery-thumbnail" type="button" data-gallery-thumbnail
+                        aria-label="@L["Otvori fotografiju {0} od {1}", i + 1, Model.Images.Count]">
+                    <img src="@Model.Images[i].Path" alt="" loading="lazy" />
+                </button>
+            }
         </div>
     </div>
-</div>
+</dialog>

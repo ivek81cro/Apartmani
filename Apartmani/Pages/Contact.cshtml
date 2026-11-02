@@ -1,56 +1,40 @@
-﻿@page
+@page
 @model Apartmani.Pages.ContactModel
 @{
-    ViewData["Title"] = "Kontakt";
-    ViewData["Description"] = "kontakt podaci i karta lokacije za Apartmane Tokić";
+    ViewData["Title"] = L["Kontakt"].Value;
+    ViewData["Description"] = L["Kontaktirajte Apartmane Tokić u Mastrinki na otoku Čiovu."].Value;
 }
-
-<h1 class="mt-3 mb-3">
-    Kontakt
-</h1>
-
-<div class="row">
-    <div class="col-12 col-md-8">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1446.7349164889729!2d16.285188902986647!3d43.51339433317181!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5b5a3a26f1f877d!2sApartmani%20Toki%C4%87!5e0!3m2!1sen!2shr!4v1602099427081!5m2!1sen!2shr"
-                class="w-100" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    </div>
-    <div class="col-12 col-md-4">
-        <h3 class="text-secondary">
-            Kontakt
-        </h3>
-        <p>
-            tel.:<br />
-            +385 98 936 4321<br />
-            +385 98 963 9127<br />
-            +387 63 335 502<br />
-            <a href="mailto:apartman.tokic@gmail.com">apartman.tokic@gmail.com</a>
-        </p>
-    </div>
-    <div class="card-body col-12 col-md-8 w-100">
-        <div class="card">
-            <div class="card-header">
-                <i class="fa fa-envelope"></i> Kontaktirajte nas putem poruke
-            </div>
-            <div class="card-body">
-                <form method="post">
-                    <div class="form-group">
-                        <label for="Name">Ime/Naziv:</label>
-                        <input type="text" class="form-control" placeholder="Upišite ime/naziv" required name="Name" />
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email adresa:</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Upišite svoju email adresu" required name="Email" />
-                        <small id="emailHelp" class="form-text text-muted">Vašu email adresu ne dijelimo i koristimo isključivo za povratni kontakt.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="Message">Poruka:</label>
-                        <textarea name="Message" class="form-control" id="message" rows="6" required></textarea>
-                    </div>
-                    <div class="mx-auto">
-                        <input type="submit" class="btn btn-secondary text-right" value="Pošalji" />
-                    </div>
-                </form>
-            </div>
+<section class="page-heading wrap">
+    <p class="eyebrow">@L["TU SMO ZA VAS"]</p>
+    <h1>@L["Planirajmo vaš odmor"]</h1>
+    <p class="lead">@L["Pošaljite nam upit ili nas nazovite. Rado ćemo odgovoriti na vaša pitanja."]</p>
+</section>
+<section class="section wrap page-content">
+    <div class="contact-grid">
+        <div>
+            <h2>@L["Kontaktirajte nas"]</h2>
+            <p>Put Sv. Križa 38<br />Mastrinka, otok Čiovo</p>
+            <p><a href="tel:+385989364321">+385 98 936 4321</a><br /><a href="tel:+385989639127">+385 98 963 9127</a><br /><a href="tel:+38763335502">+387 63 335 502</a><br /><a href="mailto:apartman.tokic@gmail.com">apartman.tokic@gmail.com</a></p>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Apartmani+Toki%C4%87+Mastrinka" target="_blank" rel="noopener">@L["Otvori kartu"] ↗</a>
+        </div>
+        <div class="form-panel">
+            <h2>@L["Pošaljite poruku"]</h2>
+            <form method="post">
+                <div class="spam-trap" aria-hidden="true">
+                    <label for="Website">@L["Ostavite ovo polje praznim"]</label>
+                    <input id="Website" name="Website" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+                <div asp-validation-summary="All" class="validation">
+                </div>
+                <label for="Name">@L["Ime i prezime"]</label>
+                <input id="Name" name="Name" maxlength="100" value="@Model.Name" required />
+                <label for="Email">@L["E-mail adresa"]</label>
+                <input id="Email" name="Email" maxlength="254" type="email" value="@Model.Email" required />
+                <label for="Message">@L["Poruka"]</label>
+                <textarea id="Message" name="Message" maxlength="5000" rows="6" required>@Model.Message</textarea>
+                <p class="form-note">@L["Podatke koristimo za odgovor na vaš upit. Više u"] <a asp-page="/Privacy">@L["obavijesti o privatnosti"]</a>.</p>
+                <button class="button" type="submit">@L["Pošaljite poruku"] →</button>
+            </form>
         </div>
     </div>
-</div>
+</section>

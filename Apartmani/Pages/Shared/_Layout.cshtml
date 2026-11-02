@@ -1,50 +1,44 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2587680-11"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-2587680-11');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Apartmani</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css" />
-    <meta name="description" content="@ViewData["Description"]" />
-    <script src="https://kit.fontawesome.com/2e5708cab9.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <header>
-        <partial name="_HeaderPartial" />
-        <partial name="_NavigationPartial" />
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+<!DOCTYPE html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>@ViewData["Title"] | Apartmani Tokić</title>
+        <meta name="description" content="@ViewData["Description"]" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </head>
+    <body>
+        <a class="skip-link" href="#main">@L["Prijeđi na sadržaj"]</a>
+        <header class="site-header">
+            <div class="wrap header-inner">
+                <a class="brand" asp-area="" asp-page="/Index"><span>APARTMANI</span>
+                <strong>TOKIĆ</strong><i aria-hidden="true">∿</i></a>
+                <partial name="_NavigationPartial" />
+                <a class="button header-cta" asp-area="" asp-page="/Contact">@L["Pošaljite upit"] <span aria-hidden="true">→</span></a>
+            </div>
+        </header>
+        <main id="main">
             @RenderBody()
         </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container text-center">
-            &copy; @DateTime.Now.Year.ToString() - Apartmani Tokić <a href="https://www.facebook.com/pages/category/Real-Estate/Apartmani-Toki%C4%87-564370210333392/">
-            <img src="~/img/fbicon.png" class="img-fluid ml-5" width="40" /></a>
-        </div>
-    </footer>
-    <div class="container-fluid float-left">
-        <partial name="_CookieConsentPartial" />
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-
-    @RenderSection("Scripts", required: false)
-</body>
+        <footer class="site-footer">
+            <div class="wrap footer-inner">
+                <div>
+                    <a class="footer-brand" asp-area="" asp-page="/Index">Apartmani Tokić</a>
+                    <p>Put Sv. Križa 38 · Mastrinka, Čiovo</p>
+                </div>
+                <div>
+                    <a href="tel:+385989364321">+385 98 936 4321</a><br /><a href="mailto:apartman.tokic@gmail.com">apartman.tokic@gmail.com</a>
+                </div>
+                <div>
+                    <a asp-area="" asp-page="/Privacy">@L["Privatnost i kolačići"]</a>
+                    <p>© @DateTime.Now.Year Apartmani Tokić</p>
+                </div>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
 </html>

@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Odmor uz more na Čiovu" xml:space="preserve">
+    <value>Urlaub am Meer auf Čiovo</value>
+  </data>
+  <data name="Apartmani Tokić u Mastrinki na Čiovu, uz more i nedaleko od Trogira." xml:space="preserve">
+    <value>Apartmani Tokić in Mastrinka auf Čiovo, direkt am Meer und nahe Trogir.</value>
+  </data>
+  <data name="MASTRINKA · ČIOVO · HRVATSKA" xml:space="preserve">
+    <value>MASTRINKA · ČIOVO · KROATIEN</value>
+  </data>
+  <data name="Uživajte u opuštenom boravku uz obalu, nadomak Trogira." xml:space="preserve">
+    <value>Genießen Sie einen entspannten Aufenthalt am Meer, nahe Trogir.</value>
+  </data>
+  <data name="Pogledajte apartmane" xml:space="preserve">
+    <value>Apartments ansehen</value>
+  </data>
+  <data name="DOBRO DOŠLI" xml:space="preserve">
+    <value>WILLKOMMEN</value>
+  </data>
+  <data name="Vaš kutak uz more" xml:space="preserve">
+    <value>Ihr Platz am Meer</value>
+  </data>
+  <data name="Apartmani Tokić nalaze se uz samu obalu u Mastrinki na otoku Čiovu, oko 3 km od Trogira." xml:space="preserve">
+    <value>Die Apartmani Tokić liegen direkt am Meer in Mastrinka auf Čiovo, etwa 3 km von Trogir entfernt.</value>
+  </data>
+  <data name="Provedite dane uz more, istražite Trogir i okolicu ili se jednostavno opustite na terasi. Trgovina i ugostiteljski objekti nalaze se u blizini." xml:space="preserve">
+    <value>Verbringen Sie Ihre Tage am Meer, erkunden Sie Trogir und die Umgebung oder entspannen Sie auf der Terrasse. Geschäfte und Restaurants befinden sich in der Nähe.</value>
+  </data>
+  <data name="Javite nam se" xml:space="preserve">
+    <value>Kontaktieren Sie uns</value>
+  </data>
+  <data name="HomeApartmentsEyebrow" xml:space="preserve">
+    <value>UNSERE APARTMENTS</value>
+  </data>
+  <data name="Prostor za vaš odmor" xml:space="preserve">
+    <value>Raum für Ihren Urlaub</value>
+  </data>
+  <data name="Svi detalji" xml:space="preserve">
+    <value>Alle Details</value>
+  </data>
+  <data name="ZA MANJE DRUŠTVO" xml:space="preserve">
+    <value>FÜR KLEINERE GRUPPEN</value>
+  </data>
+  <data name="Apartman 2 + 2" xml:space="preserve">
+    <value>Apartment 2 + 2</value>
+  </data>
+  <data name="Spavaća soba, dnevni boravak, kuhinja i terasa za opušten boravak." xml:space="preserve">
+    <value>Schlafzimmer, Wohnzimmer, Küche und Terrasse für einen entspannten Aufenthalt.</value>
+  </data>
+  <data name="Saznajte više" xml:space="preserve">
+    <value>Mehr erfahren</value>
+  </data>
+  <data name="ZA VEĆE DRUŠTVO" xml:space="preserve">
+    <value>FÜR GRÖSSERE GRUPPEN</value>
+  </data>
+  <data name="Apartman 6 + 2" xml:space="preserve">
+    <value>Apartment 6 + 2</value>
+  </data>
+  <data name="Više prostora za obitelj ili prijatelje, s tri spavaće sobe i terasom." xml:space="preserve">
+    <value>Mehr Platz für Familie oder Freunde, mit drei Schlafzimmern und Terrasse.</value>
+  </data>
+  <data name="Pogled na Apartmane Tokić i okolicu" xml:space="preserve">
+    <value>Blick auf die Apartmani Tokić und die Umgebung</value>
+  </data>
+  <data name="Pogodnosti" xml:space="preserve">
+    <value>Ausstattung</value>
+  </data>
+  <data name="Uz more" xml:space="preserve">
+    <value>Am Meer</value>
+  </data>
+  <data name="Obala na dohvat ruke" xml:space="preserve">
+    <value>Die Küste vor der Haustür</value>
+  </data>
+  <data name="Terasa" xml:space="preserve">
+    <value>Terrasse</value>
+  </data>
+  <data name="Prostor za opuštanje" xml:space="preserve">
+    <value>Platz zum Entspannen</value>
+  </data>
+  <data name="Opremljena kuhinja" xml:space="preserve">
+    <value>Ausgestattete Küche</value>
+  </data>
+  <data name="Za ugodan boravak" xml:space="preserve">
+    <value>Für einen angenehmen Aufenthalt</value>
+  </data>
+  <data name="Wi-Fi i klima" xml:space="preserve">
+    <value>WLAN und Klimaanlage</value>
+  </data>
+  <data name="U svim apartmanima" xml:space="preserve">
+    <value>In allen Apartments</value>
+  </data>
+  <data name="PLANIRATE ODMOR?" xml:space="preserve">
+    <value>PLANEN SIE IHREN URLAUB?</value>
+  </data>
+  <data name="Radujemo se vašem dolasku." xml:space="preserve">
+    <value>Wir freuen uns auf Ihren Besuch.</value>
+  </data>
+  <data name="Pošaljite upit" xml:space="preserve">
+    <value>Anfrage senden</value>
+  </data>
+  <data name="Apartmani" xml:space="preserve">
+    <value>Apartments</value>
+  </data>
+  <data name="Istražite apartmane Tokić u Mastrinki na Čiovu." xml:space="preserve">
+    <value>Entdecken Sie die Apartments Tokić in Mastrinka auf Čiovo.</value>
+  </data>
+  <data name="BORAVAK UZ MORE" xml:space="preserve">
+    <value>AUFENTHALT AM MEER</value>
+  </data>
+  <data name="Naši apartmani" xml:space="preserve">
+    <value>Unsere Apartments</value>
+  </data>
+  <data name="Prostor za odmor, druženje i bezbrižne dane na Čiovu." xml:space="preserve">
+    <value>Raum zum Entspannen, Zusammensein und für unbeschwerte Tage auf Čiovo.</value>
+  </data>
+  <data name="OSJEĆAJTE SE KAO KOD KUĆE" xml:space="preserve">
+    <value>FÜHLEN SIE SICH WIE ZU HAUSE</value>
+  </data>
+  <data name="Sve što vam je potrebno" xml:space="preserve">
+    <value>Alles, was Sie brauchen</value>
+  </data>
+  <data name="Svi apartmani imaju terasu, klima uređaj, satelitsku televiziju, Wi-Fi te opremljenu kuhinju s hladnjakom i aparatom za kavu. Gostima su na raspolaganju parking i zajednički zidani roštilj." xml:space="preserve">
+    <value>Alle Apartments verfügen über eine Terrasse, Klimaanlage, Sat-TV, WLAN und eine ausgestattete Küche mit Kühlschrank und Kaffeemaschine. Parkplätze und ein gemeinsamer Grill stehen zur Verfügung.</value>
+  </data>
+  <data name="Osam apartmana sa spavaćom sobom, dnevnim boravkom s ležajem za dvije osobe, kuhinjom, kupaonicom i terasom." xml:space="preserve">
+    <value>Acht Apartments mit Schlafzimmer, Wohnzimmer mit Schlafmöglichkeit für zwei Personen, Küche, Bad und Terrasse.</value>
+  </data>
+  <data name="Veći apartman s tri spavaće sobe, dnevnim boravkom s ležajem za dvije osobe, kuhinjom, dvije kupaonice i terasom." xml:space="preserve">
+    <value>Ein größeres Apartment mit drei Schlafzimmern, Wohnzimmer mit Schlafmöglichkeit für zwei Personen, Küche, zwei Bädern und Terrasse.</value>
+  </data>
+  <data name="Galerija" xml:space="preserve">
+    <value>Galerie</value>
+  </data>
+  <data name="Fotografije apartmana Tokić i njihove okolice." xml:space="preserve">
+    <value>Fotos der Apartments Tokić und ihrer Umgebung.</value>
+  </data>
+  <data name="TRENUTAK NA ČIOVU" xml:space="preserve">
+    <value>EIN MOMENT AUF ČIOVO</value>
+  </data>
+  <data name="Zavirite u apartmane i njihovu okolicu." xml:space="preserve">
+    <value>Entdecken Sie die Apartments und ihre Umgebung.</value>
+  </data>
+  <data name="Fotografije trenutačno nisu dostupne." xml:space="preserve">
+    <value>Fotos sind derzeit nicht verfügbar.</value>
+  </data>
+  <data name="Pregled fotografija" xml:space="preserve">
+    <value>Fotoansicht</value>
+  </data>
+  <data name="Zatvori pregled" xml:space="preserve">
+    <value>Ansicht schließen</value>
+  </data>
+  <data name="Prethodna fotografija" xml:space="preserve">
+    <value>Vorheriges Foto</value>
+  </data>
+  <data name="Sljedeća fotografija" xml:space="preserve">
+    <value>Nächstes Foto</value>
+  </data>
+  <data name="Otvori fotografiju {0} od {1}" xml:space="preserve">
+    <value>Foto {0} von {1} öffnen</value>
+  </data>
+  <data name="Apartmani Tokić i okolica, fotografija {0}" xml:space="preserve">
+    <value>Apartmani Tokić und Umgebung, Foto {0}</value>
+  </data>
+  <data name="Kontakt" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kontaktirajte Apartmane Tokić u Mastrinki na otoku Čiovu." xml:space="preserve">
+    <value>Kontaktieren Sie Apartmani Tokić in Mastrinka auf Čiovo.</value>
+  </data>
+  <data name="TU SMO ZA VAS" xml:space="preserve">
+    <value>WIR SIND FÜR SIE DA</value>
+  </data>
+  <data name="Planirajmo vaš odmor" xml:space="preserve">
+    <value>Planen wir Ihren Urlaub</value>
+  </data>
+  <data name="Pošaljite nam upit ili nas nazovite. Rado ćemo odgovoriti na vaša pitanja." xml:space="preserve">
+    <value>Senden Sie uns eine Anfrage oder rufen Sie uns an. Wir beantworten gerne Ihre Fragen.</value>
+  </data>
+  <data name="Kontaktirajte nas" xml:space="preserve">
+    <value>Kontaktieren Sie uns</value>
+  </data>
+  <data name="Otvori kartu" xml:space="preserve">
+    <value>Karte öffnen</value>
+  </data>
+  <data name="Pošaljite poruku" xml:space="preserve">
+    <value>Nachricht senden</value>
+  </data>
+  <data name="Ostavite ovo polje praznim" xml:space="preserve">
+    <value>Lassen Sie dieses Feld leer</value>
+  </data>
+  <data name="Ime i prezime" xml:space="preserve">
+    <value>Vor- und Nachname</value>
+  </data>
+  <data name="E-mail adresa" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="Poruka" xml:space="preserve">
+    <value>Nachricht</value>
+  </data>
+  <data name="Podatke koristimo za odgovor na vaš upit. Više u" xml:space="preserve">
+    <value>Wir verwenden Ihre Angaben, um Ihre Anfrage zu beantworten. Lesen Sie unsere</value>
+  </data>
+  <data name="obavijesti o privatnosti" xml:space="preserve">
+    <value>Datenschutzhinweise</value>
+  </data>
+  <data name="Privatnost i kolačići" xml:space="preserve">
+    <value>Datenschutz und Cookies</value>
+  </data>
+  <data name="VAŠA PRIVATNOST" xml:space="preserve">
+    <value>IHRE PRIVATSPHÄRE</value>
+  </data>
+  <data name="Kontaktni obrazac" xml:space="preserve">
+    <value>Kontaktformular</value>
+  </data>
+  <data name="Kada nam pošaljete upit, koristimo uneseno ime, adresu e-pošte i poruku kako bismo odgovorili na vaš zahtjev. Za pitanja o obradi osobnih podataka obratite nam se na" xml:space="preserve">
+    <value>Wenn Sie uns eine Anfrage senden, verwenden wir Ihren Namen, Ihre E-Mail-Adresse und Nachricht, um Ihnen zu antworten. Fragen zur Verarbeitung personenbezogener Daten richten Sie bitte an</value>
+  </data>
+  <data name="Kolačići" xml:space="preserve">
+    <value>Cookies</value>
+  </data>
+  <data name="Ova stranica ne učitava analitičke ni marketinške kolačiće. Tehnički nužni kolačići mogu se koristiti za sigurnost obrasca i prijavu administratora." xml:space="preserve">
+    <value>Diese Website lädt keine Analyse- oder Marketing-Cookies. Technisch notwendige Cookies können für die Formularsicherheit, die Anmeldung der Verwaltung und die Spracheinstellung verwendet werden.</value>
+  </data>
+  <data name="Vanjske poveznice" xml:space="preserve">
+    <value>Externe Links</value>
+  </data>
+  <data name="Poveznica na kartu otvara Google Maps tek kada je odaberete. Tada se primjenjuju pravila privatnosti te usluge." xml:space="preserve">
+    <value>Der Kartenlink öffnet Google Maps erst, wenn Sie ihn auswählen. Dann gilt die Datenschutzerklärung dieses Dienstes.</value>
+  </data>
+  <data name="Za ostvarivanje prava na pristup, ispravak ili brisanje osobnih podataka te za ostala pitanja javite nam se na navedenu adresu e-pošte." xml:space="preserve">
+    <value>Um Ihre Rechte auf Auskunft, Berichtigung oder Löschung personenbezogener Daten auszuüben oder bei weiteren Fragen kontaktieren Sie uns bitte über die oben genannte E-Mail-Adresse.</value>
+  </data>
+  <data name="Poruka poslana" xml:space="preserve">
+    <value>Nachricht gesendet</value>
+  </data>
+  <data name="HVALA VAM" xml:space="preserve">
+    <value>VIELEN DANK</value>
+  </data>
+  <data name="Poruka je poslana." xml:space="preserve">
+    <value>Ihre Nachricht wurde gesendet.</value>
+  </data>
+  <data name="Javit ćemo vam se u najkraćem mogućem roku." xml:space="preserve">
+    <value>Wir melden uns so bald wie möglich bei Ihnen.</value>
+  </data>
+  <data name="Povratak na naslovnicu" xml:space="preserve">
+    <value>Zurück zur Startseite</value>
+  </data>
+  <data name="Prijeđi na sadržaj" xml:space="preserve">
+    <value>Zum Inhalt springen</value>
+  </data>
+  <data name="Glavna navigacija" xml:space="preserve">
+    <value>Hauptnavigation</value>
+  </data>
+  <data name="Izbornik" xml:space="preserve">
+    <value>Menü</value>
+  </data>
+  <data name="Naslovnica" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="Jezik" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="Odaberite jezik" xml:space="preserve">
+    <value>Sprache wählen</value>
+  </data>
+  <data name="The {0} field is required." xml:space="preserve">
+    <value>Das Feld {0} ist erforderlich.</value>
+  </data>
+  <data name="The {0} field is not a valid e-mail address." xml:space="preserve">
+    <value>Das Feld {0} enthält keine gültige E-Mail-Adresse.</value>
+  </data>
+  <data name="The field {0} must be a string with a maximum length of {1}." xml:space="preserve">
+    <value>Das Feld {0} darf höchstens {1} Zeichen enthalten.</value>
+  </data>
+  <data name="Provjerite adresu e-pošte." xml:space="preserve">
+    <value>Bitte überprüfen Sie die E-Mail-Adresse.</value>
+  </data>
+  <data name="Poruku trenutačno nije moguće poslati. Pokušajte ponovno ili nam se javite telefonom." xml:space="preserve">
+    <value>Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder rufen Sie uns an.</value>
+  </data>
+</root>

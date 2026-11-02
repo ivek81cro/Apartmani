@@ -1,59 +1,88 @@
-﻿@page
+@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
-    ViewData["Description"] = "Najam apartmana u mjestu Mastrinka na otoku Čiovo, smješten uz samu obalu, parking je osiguran" +
-                ", svi apartmani su opremljeni klima uređajem, tv-om, hladnjakom, Wi-Fi, aparatom za filter kavu.";
+    ViewData["Title"] = L["Odmor uz more na Čiovu"].Value;
+    ViewData["Description"] = L["Apartmani Tokić u Mastrinki na Čiovu, uz more i nedaleko od Trogira."].Value;
+    var hero = Model.Images.FirstOrDefault()?.Path ?? "/img/carousel/43.png";
 }
-
-<div class="text-center">
-    @if (Model.Images.Count > 0)
-    {
-        <div class="carousel slide carousel-fade shadow" id="CarouselIndex" data-ride="carousel" data-interval="3000">
-            <div class="carousel-inner">
-                @for (int i = 0; i < Model.Images.Count(); i++)
-                {
-                    if (i == 0)
-                    {
-                        <div class="carousel-item active">
-                            <img class="img-fluid mx-auto d-block w-100" src="@Model.Images[i].Path" />
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="carousel-item">
-                            <img class="img-fluid mx-auto d-block w-100" src="@Model.Images[i].Path" />
-                        </div>
-                    }
-                }
+<section class="hero" style="--hero-image: url('@hero')">
+    <div class="wrap hero-content">
+        <p class="eyebrow light">@L["MASTRINKA · ČIOVO · HRVATSKA"]</p>
+        <h1>@L["Odmor uz more na Čiovu"]</h1>
+        <p>@L["Uživajte u opuštenom boravku uz obalu, nadomak Trogira."]</p>
+        <a class="button" asp-page="/Apartmani">@L["Pogledajte apartmane"] <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+<section class="section wrap intro">
+    <div>
+        <p class="eyebrow">@L["DOBRO DOŠLI"]</p>
+        <h2>@L["Vaš kutak uz more"]</h2>
+    </div>
+    <div>
+        <p class="lead">@L["Apartmani Tokić nalaze se uz samu obalu u Mastrinki na otoku Čiovu, oko 3 km od Trogira."]</p>
+        <p>@L["Provedite dane uz more, istražite Trogir i okolicu ili se jednostavno opustite na terasi. Trgovina i ugostiteljski objekti nalaze se u blizini."]</p>
+        <a class="text-link" asp-page="/Contact">@L["Javite nam se"] <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+<section class="section section-tint">
+    <div class="wrap">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">@L["HomeApartmentsEyebrow"]</p>
+                <h2>@L["Prostor za vaš odmor"]</h2>
             </div>
-            <a class="carousel-control-prev" href="#CarouselIndex" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#CarouselIndex" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <a class="text-link" asp-page="/Apartmani">@L["Svi detalji"] <span aria-hidden="true">→</span></a>
         </div>
-    }
-</div>
-
-<div class="text-justify pt-5">
-    <h2 class="pb-2">
-        O apartmanima
-    </h2>
-    <p>
-        Apartmani Tokić smješteni su uz samu obalu u naselju Mastrinka na otoku Čiovu, 3km od Trogira. 
-        Točan položaj objekta možete pogledati na karti. Lokacija objekta je odmah uz more, u neposrednoj 
-        blizini se nalazi trgovina i ugostiteljski objekti. U kući se nalaze 8 apartmana koji se sastoje od 
-        terase, dnevnog boravka, kuhinje, kupaonice i spavaće sobe. Također imamo jedan veći apartman koji 
-        se sastoji od terase, dnevog boravka, tri spavaće sobe i dvije kupaonice. Svi apartmani su opremljeni 
-        sa klima uređajem, tv-om, satelitskom, te imaju besplatan pristup internetu putem wi-fi mreže. 
-        Također u svakom apartmanu je opremljena kuhinja sa gotovo svim potrebnim posuđem za pripremu obroka, 
-        hladnjakom, te aparatom za kavu. U krugu objekta također se nalazi veliki zidani roštilj te veliki stol 
-        koji stoje na raspolaganje našim gostima. U slučaju želje za obilazak Trogira i okolice, uključujući Split, 
-        možete, uz gradski autobus ili vlastiti automobil, također odabrati i prijevoz brodicom koja više puta 
-        dnevno staje u blizini apartmana.
-    </p>
-</div>
+        <div class="apartment-grid">
+            <article class="apartment-card">
+                <img src="~/img/apartmani/47.jpg" alt="Apartmani Tokić" loading="lazy" />
+                <div>
+                    <p class="eyebrow">@L["ZA MANJE DRUŠTVO"]</p>
+                    <h3>@L["Apartman 2 + 2"]</h3>
+                    <p>@L["Spavaća soba, dnevni boravak, kuhinja i terasa za opušten boravak."]</p>
+                    <a class="text-link" asp-page="/Apartmani">@L["Saznajte više"] →</a>
+                </div>
+            </article>
+            <article class="apartment-card">
+                <img src="@(Model.Images.Skip(1).FirstOrDefault()?.Path ?? hero)" alt="@L["Pogled na Apartmane Tokić i okolicu"]" loading="lazy" />
+                <div>
+                    <p class="eyebrow">@L["ZA VEĆE DRUŠTVO"]</p>
+                    <h3>@L["Apartman 6 + 2"]</h3>
+                    <p>@L["Više prostora za obitelj ili prijatelje, s tri spavaće sobe i terasom."]</p>
+                    <a class="text-link" asp-page="/Apartmani">@L["Saznajte više"] →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<section class="features wrap" aria-label="@L["Pogodnosti"]">
+    <div>
+        <span>≈</span>
+        <strong>@L["Uz more"]</strong>
+        <p>@L["Obala na dohvat ruke"]</p>
+    </div>
+    <div>
+        <span>☼</span>
+        <strong>@L["Terasa"]</strong>
+        <p>@L["Prostor za opuštanje"]</p>
+    </div>
+    <div>
+        <span>⌂</span>
+        <strong>@L["Opremljena kuhinja"]</strong>
+        <p>@L["Za ugodan boravak"]</p>
+    </div>
+    <div>
+        <span>⌁</span>
+        <strong>@L["Wi-Fi i klima"]</strong>
+        <p>@L["U svim apartmanima"]</p>
+    </div>
+</section>
+<section class="contact-strip">
+    <div class="wrap">
+        <div>
+            <p class="eyebrow light">@L["PLANIRATE ODMOR?"]</p>
+            <h2>@L["Radujemo se vašem dolasku."]</h2>
+        </div>
+        <a class="button button-light" asp-page="/Contact">@L["Pošaljite upit"] →</a>
+    </div>
+</section>

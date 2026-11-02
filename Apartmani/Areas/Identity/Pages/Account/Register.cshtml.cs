@@ -18,7 +18,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Apartmani.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize(Roles = SD.AdminEndUser)]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;

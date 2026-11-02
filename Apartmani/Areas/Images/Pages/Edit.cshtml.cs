@@ -1,13 +1,12 @@
-﻿using System.Linq;
 using System.Threading.Tasks;
+using Apartmani.Data;
+using Apartmani.Models;
+using Apartmani.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Apartmani.Data;
-using Apartmani.Models;
-using Microsoft.AspNetCore.Authorization;
-using Apartmani.Utility;
 
 namespace Apartmani.Pages.Images
 {
@@ -15,66 +14,34 @@ namespace Apartmani.Pages.Images
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-
-        public EditModel(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        [BindProperty]
-        public Image Image { get; set; }
+        public EditModel(ApplicationDbContext context) { _context = context; }
+        [BindProperty] public Image Image { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Image = await _context.Image
-                .Include(i => i.ImageCategory).FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Image == null)
-            {
-                return NotFound();
-            }
-           ViewData["CategoryId"] = new SelectList(_context.ImageCategory, "Id", "Name");
+            Image = await _context.Image.FirstOrDefaultAsync(item => item.Id == id);
+            if (Image == null) return NotFound();
+            LoadCategories();
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (Image == null) return BadRequest();
+            var existing = await _context.Image.FindAsync(Image.Id);
+            if (existing == null) return NotFound();
+            if (!await _context.ImageCategory.AnyAsync(category => category.Id == Image.CategoryId))
             {
+                ModelState.AddModelError(string.Empty, "Choose a valid category.");
+                Image.Path = existing.Path;
+                LoadCategories();
                 return Page();
             }
-
-            _context.Attach(Image).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ImageExists(Image.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            existing.CategoryId = Image.CategoryId;
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
 
-        private bool ImageExists(int id)
-        {
-            return _context.Image.Any(e => e.Id == id);
-        }
+        private void LoadCategories() => ViewData["CategoryId"] = new SelectList(_context.ImageCategory, "Id", "Name");
     }
 }

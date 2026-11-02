@@ -1,16 +1,13 @@
-﻿using System.Linq;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Apartmani.Data;
 using Apartmani.Models;
 using Apartmani.Utility;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
-using Microsoft.AspNetCore.Http;
-using System;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Apartmani.Pages.ImageCategories
 {
@@ -18,80 +15,38 @@ namespace Apartmani.Pages.ImageCategories
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
-
-        public EditModel(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
-        {
-            _context = context;
-            _hostEnvironment = hostEnvironment;
-        }
-
-        [BindProperty]
-        public ImageCategory ImageCategory { get; set; }
+        public EditModel(ApplicationDbContext context) { _context = context; }
+        [BindProperty] public ImageCategory ImageCategory { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            ImageCategory = await _context.ImageCategory.FirstOrDefaultAsync(m => m.Id == id);
-
-            CookieOptions option = new CookieOptions();
-            option.Expires = DateTime.Now.AddSeconds(60);
-
-            Response.Cookies.Append("Category", ImageCategory.Name.ToLower(), option);
-
-            if (ImageCategory == null)
-            {
-                return NotFound();
-            }
-
-            return Page();
+            ImageCategory = await _context.ImageCategory.FirstOrDefaultAsync(category => category.Id == id);
+            return ImageCategory == null ? NotFound() : Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || ImageCategory == null) return Page();
+            var category = await _context.ImageCategory.FindAsync(ImageCategory.Id);
+            if (category == null) return NotFound();
+            var name = ImageCategory.Name.Trim();
+            if (IsSystemCategory(category.Name) || IsSystemCategory(name))
             {
+                ModelState.AddModelError(string.Empty, "The built-in categories cannot be renamed or reused.");
                 return Page();
             }
-
-            _context.Attach(ImageCategory).State = EntityState.Modified;
-
-            try
+            if (await _context.ImageCategory.AnyAsync(item => item.Id != category.Id && item.Name == name))
             {
-                await _context.SaveChangesAsync();
-
-                string cookieValueFromReq = Request.Cookies["Category"];
-                string webRoot = _hostEnvironment.WebRootPath;
-                string pathSource = Path.Combine(webRoot, $"img\\{cookieValueFromReq}");
-                string pathDestin = Path.Combine(webRoot, $"img\\{ImageCategory.Name.ToLower()}");
-                if (pathSource != pathDestin)
-                    if (Directory.Exists(pathSource))
-                        Directory.Move(pathSource, pathDestin);
+                ModelState.AddModelError(string.Empty, "A category with this name already exists.");
+                return Page();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ImageCategoryExists(ImageCategory.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Existing image paths remain unchanged; category names are not filesystem paths.
+            category.Name = name;
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
 
-        private bool ImageCategoryExists(int id)
-        {
-            return _context.ImageCategory.Any(e => e.Id == id);
-        }
+        public static bool IsSystemCategory(string name) => new[] { "Carousel", "Apartmani", "Gallery" }
+            .Any(value => string.Equals(value, name, StringComparison.OrdinalIgnoreCase));
     }
 }

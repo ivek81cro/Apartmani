@@ -1,8 +1,18 @@
-﻿@page
+@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = L["Privatnost i kolačići"].Value;
 }
-<h1>@ViewData["Title"]</h1>
-
-<p>Use this page to detail your site's privacy policy.</p>
+<section class="page-heading wrap">
+    <p class="eyebrow">@L["VAŠA PRIVATNOST"]</p>
+    <h1>@L["Privatnost i kolačići"]</h1>
+</section>
+<section class="wrap section page-content prose">
+    <h2>@L["Kontaktni obrazac"]</h2>
+    <p>@L["Kada nam pošaljete upit, koristimo uneseno ime, adresu e-pošte i poruku kako bismo odgovorili na vaš zahtjev. Za pitanja o obradi osobnih podataka obratite nam se na"] <a href="mailto:apartman.tokic@gmail.com">apartman.tokic@gmail.com</a>.</p>
+    <h2>@L["Kolačići"]</h2>
+    <p>@L["Ova stranica ne učitava analitičke ni marketinške kolačiće. Tehnički nužni kolačići mogu se koristiti za sigurnost obrasca i prijavu administratora."]</p>
+    <h2>@L["Vanjske poveznice"]</h2>
+    <p>@L["Poveznica na kartu otvara Google Maps tek kada je odaberete. Tada se primjenjuju pravila privatnosti te usluge."]</p>
+    <p>@L["Za ostvarivanje prava na pristup, ispravak ili brisanje osobnih podataka te za ostala pitanja javite nam se na navedenu adresu e-pošte."]</p>
+</section>

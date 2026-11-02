@@ -1,0 +1,10 @@
+[Unit]
+Description=Verified backup of Apartmani Tokic application and database
+After=network-online.target mssql-server.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/local/sbin/atokicasp-backup
+UMask=0077

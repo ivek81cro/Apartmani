@@ -1,44 +1,39 @@
-﻿@page
+@page
 @model Apartmani.Pages.ApartmaniModel
 @{
-    ViewData["Title"] = "Apartmani";
-    ViewData["Description"] = "Općeniti opis aartmana i njihovih sadržaja.";
+    ViewData["Title"] = L["Apartmani"].Value;
+    ViewData["Description"] = L["Istražite apartmane Tokić u Mastrinki na Čiovu."].Value;
 }
-
-<h1 class="mt-3 mb-3">
-    Apartmani
-</h1>
-
-<div class="row">
-    <div class="col-12 col-md-3">
-        <img src="@Model.Images[0].Path" class="shadow img-fluid" />
+<section class="page-heading wrap">
+    <p class="eyebrow">@L["BORAVAK UZ MORE"]</p>
+    <h1>@L["Naši apartmani"]</h1>
+    <p class="lead">@L["Prostor za odmor, druženje i bezbrižne dane na Čiovu."]</p>
+</section>
+<section class="wrap section page-content">
+    <div class="detail-layout">
+        <div>
+            @if (Model.Images.Any())
+            {
+                <img class="detail-image" src="@Model.Images[0].Path" alt="Apartmani Tokić" />
+            }
+            else
+            {
+                <img class="detail-image" src="~/img/apartmani/47.jpg" alt="Apartmani Tokić" />
+            }
+        </div>
+        <div>
+            <p class="eyebrow">@L["OSJEĆAJTE SE KAO KOD KUĆE"]</p>
+            <h2>@L["Sve što vam je potrebno"]</h2>
+            <p>@L["Svi apartmani imaju terasu, klima uređaj, satelitsku televiziju, Wi-Fi te opremljenu kuhinju s hladnjakom i aparatom za kavu. Gostima su na raspolaganju parking i zajednički zidani roštilj."]</p>
+            <div class="detail-block">
+                <h3>@L["Apartman 2 + 2"]</h3>
+                <p>@L["Osam apartmana sa spavaćom sobom, dnevnim boravkom s ležajem za dvije osobe, kuhinjom, kupaonicom i terasom."]</p>
+            </div>
+            <div class="detail-block">
+                <h3>@L["Apartman 6 + 2"]</h3>
+                <p>@L["Veći apartman s tri spavaće sobe, dnevnim boravkom s ležajem za dvije osobe, kuhinjom, dvije kupaonice i terasom."]</p>
+            </div>
+            <a class="button" asp-page="/Contact">@L["Pošaljite upit"] →</a>
+        </div>
     </div>
-    <div class="col-12 col-md-9">
-        <h3 class="text-secondary">
-            Svi apartmani sadrže:
-        </h3>
-        <p>
-            - Klima uređaj<br />
-            - SAT Tv<br />
-            - Internet pristup Wi-Fi<br />
-            - Kuhinja: hladnjak, aparat za kavu, ploča za kuhanje<br />
-            - Kupaona: tuš-kada<br />
-            - Terasa: sol, stolci, suncobran<br />
-        </p>
-
-        <h3 class="text-secondary">
-            Apartman 2+2 (8 apartmana)
-        </h3>
-        <p>
-            -kuhinja sa blagovaonom, dnevni boravak, spavaća soba sa bračnim krevetom, kupaona sa tuš-kadom, terasa (+ stol + stolci).<br />
-            (dnevni boravak sadrži garnituru koja može poslužiti kao ležaj za 2 osobe.)
-        </p>
-        <h3 class="text-secondary">
-            Apartman 6+2 (1 apartman)
-        </h3>
-        <p>
-            -kuhinja sa blagovaonom, dnevni boravak, 3 spavaće sobe, dvije kupaone sa tuš-kadom, terasa (+ stol + stolci).<br />
-            (dnevni boravak sadrži garnituru koja može poslužiti kao ležaj za 2 osobe, te po potrebi može se postaviti još pomočni ležaj.)
-        </p>
-    </div>
-</div>
+</section>

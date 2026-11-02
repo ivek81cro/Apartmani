@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
+using System.IO;
 using System.Threading.Tasks;
+using Apartmani.Data;
+using Apartmani.Models;
+using Apartmani.Utilities;
+using Apartmani.Utility;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Apartmani.Data;
-using Apartmani.Models;
-using Microsoft.AspNetCore.Authorization;
-using Apartmani.Utility;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
-using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 
 namespace Apartmani.Pages.Images
 {
@@ -19,56 +18,40 @@ namespace Apartmani.Pages.Images
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly IWebHostEnvironment _environment;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
+        public DeleteModel(ApplicationDbContext context, IWebHostEnvironment environment, ILogger<DeleteModel> logger)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
+            _environment = environment;
+            _logger = logger;
         }
 
-        [BindProperty]
-        public Image Image { get; set; }
+        [BindProperty] public Image Image { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Image = await _context.Image
-                .Include(i => i.ImageCategory).FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Image == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            Image = await _context.Image.Include(item => item.ImageCategory).FirstOrDefaultAsync(item => item.Id == id);
+            return Image == null ? NotFound() : Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null)
+            var image = await _context.Image.FindAsync(id);
+            if (image == null) return NotFound();
+            var path = ImageStorage.ResolveImagePath(_environment.WebRootPath, image.Path);
+            var shared = await _context.Image.AnyAsync(item => item.Id != image.Id && item.Path == image.Path);
+            _context.Image.Remove(image);
+            await _context.SaveChangesAsync();
+            if (path != null && !shared)
             {
-                return NotFound();
+                try { System.IO.File.Delete(path); }
+                catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                {
+                    _logger.LogWarning(ex, "Could not remove image file after deleting image {ImageId}", image.Id);
+                }
             }
-
-            Image = await _context.Image.FindAsync(id);
-
-            if (Image != null)
-            {
-                _context.Image.Remove(Image);
-
-                string webRoot = _hostEnvironment.WebRootPath;
-                var path = Path.Combine(webRoot, $"{Image.Path}");
-                var file = new FileInfo(path);
-                if (file.Exists)
-                    file.Delete();
-
-                await _context.SaveChangesAsync();
-            }
-
             return RedirectToPage("./Index");
         }
     }

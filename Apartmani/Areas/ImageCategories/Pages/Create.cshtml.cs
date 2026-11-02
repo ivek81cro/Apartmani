@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 using Apartmani.Data;
 using Apartmani.Models;
 using Apartmani.Utility;
 using Microsoft.AspNetCore.Authorization;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Apartmani.Pages.ImageCategories
 {
@@ -14,40 +13,21 @@ namespace Apartmani.Pages.ImageCategories
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnviroment;
+        public CreateModel(ApplicationDbContext context) { _context = context; }
+        [BindProperty] public ImageCategory ImageCategory { get; set; }
+        public IActionResult OnGet() => Page();
 
-        public CreateModel(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
-        {
-            _context = context;
-            _hostEnviroment = hostEnvironment;
-        }
-
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
-
-        [BindProperty]
-        public ImageCategory ImageCategory { get; set; }
-
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || ImageCategory == null) return Page();
+            var name = ImageCategory.Name.Trim();
+            if (EditModel.IsSystemCategory(name) || await _context.ImageCategory.AnyAsync(category => category.Name == name))
             {
+                ModelState.AddModelError(string.Empty, "A category with this name already exists or is reserved.");
                 return Page();
             }
-
-            _context.ImageCategory.Add(ImageCategory);
-
+            _context.ImageCategory.Add(new ImageCategory { Name = name });
             await _context.SaveChangesAsync();
-
-            string webRoot = _hostEnviroment.WebRootPath;
-            var path = Path.Combine(webRoot, $"img/{ImageCategory.Name.ToLower()}"); //for IIS ...$"img\\..
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
             return RedirectToPage("./Index");
         }
     }

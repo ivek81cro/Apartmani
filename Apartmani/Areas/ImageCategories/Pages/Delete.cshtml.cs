@@ -1,13 +1,11 @@
-﻿using Apartmani.Data;
+using System.Threading.Tasks;
+using Apartmani.Data;
 using Apartmani.Models;
 using Apartmani.Utility;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Apartmani.Pages.ImageCategories
 {
@@ -15,53 +13,27 @@ namespace Apartmani.Pages.ImageCategories
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
-
-        public DeleteModel(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
-        {
-            _context = context;
-            _hostEnvironment = hostEnvironment;
-        }
-
-        [BindProperty]
-        public ImageCategory ImageCategory { get; set; }
+        public DeleteModel(ApplicationDbContext context) { _context = context; }
+        [BindProperty] public ImageCategory ImageCategory { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            ImageCategory = await _context.ImageCategory.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (ImageCategory == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            ImageCategory = await _context.ImageCategory.FirstOrDefaultAsync(category => category.Id == id);
+            return ImageCategory == null ? NotFound() : Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null)
+            var category = await _context.ImageCategory.FindAsync(id);
+            if (category == null) return NotFound();
+            if (EditModel.IsSystemCategory(category.Name) || await _context.Image.AnyAsync(image => image.CategoryId == category.Id))
             {
-                return NotFound();
+                ImageCategory = category;
+                ModelState.AddModelError(string.Empty, "Built-in categories and categories containing images cannot be deleted.");
+                return Page();
             }
-
-            ImageCategory = await _context.ImageCategory.FindAsync(id);
-
-            if (ImageCategory != null)
-            {
-                _context.ImageCategory.Remove(ImageCategory);
-                await _context.SaveChangesAsync();
-
-                string webRoot = _hostEnvironment.WebRootPath;
-                var path = Path.Combine(webRoot, $"img\\{ImageCategory.Name.ToLower()}");
-                if (Directory.Exists(path))
-                    Directory.Delete(path, true);
-            }
-
+            _context.ImageCategory.Remove(category);
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }
